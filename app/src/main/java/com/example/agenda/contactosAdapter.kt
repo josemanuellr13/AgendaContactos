@@ -22,15 +22,20 @@ import com.example.agenda.databinding.ViewContactoItemBinding
     override fun getItemCount(): Int = contactos.size
 
 
+
+
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view){
         private val binding = ViewContactoItemBinding.bind(view)
 
+
         fun bind(contacto: Contacto) {
-          //  Glide.with(binding.imagenContacto).load(contacto.img).into(binding.imagenContacto)
+            Glide.with(binding.imagenContacto).load(contacto.img).into(binding.imagenContacto)
                     binding.correo.text = contacto.correo
                     binding.nombre.text = contacto.nombre
                     binding.tfn.text = contacto.tfn
         }
+
+
     }
 
 }

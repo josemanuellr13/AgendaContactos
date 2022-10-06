@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="Prueba de RecyclerView"
+        android:text="Lista de contactos"
         android:textColor="@color/gray"
         android:textSize="18sp"
         android:textStyle="bold"
