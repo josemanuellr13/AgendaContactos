@@ -3,6 +3,7 @@ package com.example.agenda
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.agenda.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +13,12 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recview.adapter = contactosAdapter(listaContactos)
+        binding.recview.adapter = contactosAdapter(listaContactos){
+                contacto ->  val intent = Intent(this@MainActivity, DetailActivity::class.java)
+
+                intent.putExtra(DetailActivity.EXTRA_CONTACTO, contacto)
+                startActivity(intent);
+        }
     }
 
     val listaContactos = listOf(
