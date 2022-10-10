@@ -1,11 +1,12 @@
 package com.example.agenda
 
-import android.R
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.agenda.databinding.ActivityDetallesContactoBinding
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -26,8 +27,19 @@ class DetailActivity : AppCompatActivity() {
 
         Glide.with(binding.ivFoto).load(contacto.img).into(binding.ivFoto)
 
+        binding.btnLlamar.setOnClickListener(){
+            val phone = contacto.tfn
+            val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
+            startActivity(intent)
+        }
+
         binding.btnEmail.setOnClickListener(){
-            Toast.makeText(this, "Email copiado", Toast.LENGTH_SHORT).show()
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto: " + contacto.correo)
+            intent.putExtra(Intent.EXTRA_EMAIL, "test")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Hello World")
+
+            startActivity(intent)
         }
     }
 }
