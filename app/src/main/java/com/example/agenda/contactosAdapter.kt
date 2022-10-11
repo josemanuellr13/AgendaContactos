@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,7 @@ import com.example.agenda.databinding.ViewContactoItemBinding
 
         fun bind(contacto: Contacto) {
             binding.apply{
+                imagenContacto.glide(contacto.img)
                 Glide.with(imagenContacto).load(contacto.img).into(imagenContacto)
                 correo.text = contacto.correo
                 nombre.text = contacto.nombre
@@ -48,4 +50,11 @@ import com.example.agenda.databinding.ViewContactoItemBinding
 
     }
 
+}
+
+// Funcion de extension
+fun ImageView.glide(url: String){
+    Glide.with(this)
+        .load(url)
+        .into(this)
 }
