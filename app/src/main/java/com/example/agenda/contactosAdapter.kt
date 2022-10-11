@@ -36,10 +36,13 @@ import com.example.agenda.databinding.ViewContactoItemBinding
         private val binding = ViewContactoItemBinding.bind(view)
 
         fun bind(contacto: Contacto) {
-            Glide.with(binding.imagenContacto).load(contacto.img).into(binding.imagenContacto)
-                    binding.correo.text = contacto.correo
-                    binding.nombre.text = contacto.nombre
-                    binding.tfn.text = contacto.tfn
+            binding.apply{
+                Glide.with(imagenContacto).load(contacto.img).into(imagenContacto)
+                correo.text = contacto.correo
+                nombre.text = contacto.nombre
+                tfn.text = contacto.tfn
+            }
+
         }
 
 
